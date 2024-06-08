@@ -135,6 +135,9 @@ class Rectangle {
         void setA(int a) {
             _a = a;
         }
+        ~Rectangle() {
+            cout << "Rectangle destroyed" << endl;
+        }
 };
 void classExample() {
     Rectangle r(5, 10);
@@ -145,6 +148,11 @@ void classExample() {
     r.setA(30);
     cout << "B: " << r.getB() << endl;
     cout << "Area: " << r.area() << endl;
+
+    Rectangle *r2 = &r;
+    // r2->area()
+    // selection operator when using pointers
+    cout << "Area: " << r2->area() << endl;
 }
 
 

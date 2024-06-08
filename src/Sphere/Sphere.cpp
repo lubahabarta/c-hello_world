@@ -1,21 +1,16 @@
 #include "Sphere.h"
 
-Sphere::Sphere(double radius) {
-    _radius = radius;
-}
+// member initializer
+Sphere::Sphere(double radius) : _radius(radius) {}
 
-double Sphere::getRadius() {
+double Sphere::getRadius() const {
     return _radius;
 }
 
-void Sphere::setRadius(double radius) {
-    _radius = radius;
-}
-
-double Sphere::getVolume() {
+double Sphere::getVolume() const {
     return 4.0 / 3.0 * 3.14159 * _radius * _radius * _radius;
 }
 
-double Sphere::getSurfaceArea() {
+double Sphere::getSurfaceArea() const {
     return 4.0 * 3.14159 * _radius * _radius;
 }

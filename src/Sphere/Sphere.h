@@ -3,15 +3,13 @@
 
 class Sphere {
 private:
-    double _radius;
+    const double _radius;
 public:
     Sphere(double);
 
-    double getRadius();
-    void setRadius(double);
-
-    double getVolume();
-    double getSurfaceArea();
+    double getRadius() const;
+    double getVolume() const;
+    double getSurfaceArea() const;
 };
 
 #endif
