@@ -120,12 +120,14 @@ class Rectangle {
             _a = a;
             _b = b;
         }
+
         int area() {
             return _a * _b;
         }
         int perimeter() {
             return 2 * (_a + _b);
         }
+
         int getA() {
             return _a;
         }
@@ -135,6 +137,18 @@ class Rectangle {
         void setA(int a) {
             _a = a;
         }
+
+        friend void changeA(Rectangle &a, int newA) {
+            a._a = newA;
+        }
+
+        Rectangle operator+ (const Rectangle &r) {
+            Rectangle res;
+            res._a = _a + r._a;
+            res._b = _b + r._b;
+            return res;
+        }
+
         ~Rectangle() {
             cout << "Rectangle destroyed" << endl;
         }
@@ -169,6 +183,38 @@ void importedClassExample() {
 }
 
 
+
+/**
+ * This function demonstrates the usage of friend functions in C++.
+ * It creates an instance of the 'Rectangle' class and calls a friend function 'changeA' to change the value of side 'a'.
+ * The function then prints the new value of side 'a'.
+ */
+void friendExample() {
+    Rectangle r(5, 10);
+
+    cout << "A: " << r.getA() << endl;
+    changeA(r, 20);
+    cout << "A after friend func: " << r.getA() << endl;
+}
+
+
+
+/**
+ * This function demonstrates the usage of operator overloading in C++.
+ * It creates two instances of the 'Rectangle' class and adds them together using the '+' operator.
+ * The function then prints the values of the resulting rectangle.
+ */
+void operatorOverloading() {
+    Rectangle r1(5, 10);
+    Rectangle r2(3, 7);
+
+    Rectangle r3 = r1 + r2;
+
+    cout << "A: " << r3.getA() << endl;
+    cout << "B: " << r3.getB() << endl;
+}
+
+
 void program() {
     // pointers();
     // arrayPointers();
@@ -176,7 +222,9 @@ void program() {
     // foreach();
     // overloading();
     // classExample();
-    importedClassExample();
+    // importedClassExample();
+    // friendExample();
+    operatorOverloading();
 }
 
 int main() {
