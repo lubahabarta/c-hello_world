@@ -3,13 +3,6 @@
 
 using namespace std;
 
-/**
- * This function demonstrates the usage of pointers in C++.
- * It declares an integer variable 'a' and a pointer 'p' that points to the address of 'a'.
- * It then prints the address and value of 'a' and the address and value stored in 'p'.
- * The function also demonstrates how changes to the variable 'a' affect the value stored in 'p',
- * and how assigning a new value to the pointer 'p' affects the value of 'a'.
- */
 void pointers() {
     int a = 10;
     int *p = &a; // Pointer points to the address of the variable
@@ -32,11 +25,6 @@ void pointers() {
 
 
 
-/**
- * This function demonstrates the usage of the 'foreach' loop in C++.
- * It declares an integer array 'arr' and iterates over each element using the 'foreach' loop.
- * The loop prints each element of the array.
- */
 void foreach() {
     int arr[] = {1, 2, 3, 4, 5};
     
@@ -47,12 +35,6 @@ void foreach() {
 
 
 
-/**
- * This function demonstrates the usage of pointers with arrays in C++.
- * It declares a string array 'arr' and a pointer 'p' that points to the first element of the array.
- * It then prints the value of the first element using the pointer.
- * The function also demonstrates how to access other elements of the array using pointer arithmetic.
- */
 void arrayPointers() {
     string arr[] = {"some", "text", "here"};
 
@@ -66,11 +48,6 @@ void arrayPointers() {
 
 
 
-/**
- * This function demonstrates the usage of dynamic memory allocation in C++.
- * It takes an integer input 'n' from the user and creates an integer array of size 'n' using dynamic memory allocation.
- * It then initializes the array with values from 1 to 'n' and prints the address of the second element of the array.
- */
 void dynamicArray() {
     int n;
     cout << "Enter the size of the array: ";
@@ -93,13 +70,6 @@ int sum(int a, int b = 3) {
 string sum(string a, string b) {
     return a + b;
 }
-/**
- * This function demonstrates the concept of function overloading in C++.
- * It defines two functions with the same name 'sum' but different parameters.
- * The first 'sum' function takes two integer parameters and returns their sum.
- * The second 'sum' function takes two string parameters and returns their concatenation.
- * The function demonstrates how the correct function is called based on the parameters passed to it.
- */
 void overloading() {
     cout << sum(3) << endl;
     cout << sum("one", "two") << endl;
@@ -107,11 +77,6 @@ void overloading() {
 
 
 
-/**
- * This class represents a rectangle with two sides 'a' and 'b'.
- * It has methods to calculate the area and perimeter of the rectangle.
- * The class also has getter and setter methods for the sides 'a' and 'b'.
- */
 class Rectangle {
     private:
         int _a, _b;
@@ -171,10 +136,6 @@ void classExample() {
 
 
 
-/**
- * This function demonstrates the usage of a class imported from an external file.
- * It creates an instance of the 'Sphere' class and prints the radius, volume, and surface area of the sphere.
- */
 void importedClassExample() {
     Sphere s(5);
     cout << "Radius: " << s.getRadius() << endl;
@@ -184,11 +145,6 @@ void importedClassExample() {
 
 
 
-/**
- * This function demonstrates the usage of friend functions in C++.
- * It creates an instance of the 'Rectangle' class and calls a friend function 'changeA' to change the value of side 'a'.
- * The function then prints the new value of side 'a'.
- */
 void friendExample() {
     Rectangle r(5, 10);
 
@@ -199,11 +155,6 @@ void friendExample() {
 
 
 
-/**
- * This function demonstrates the usage of operator overloading in C++.
- * It creates two instances of the 'Rectangle' class and adds them together using the '+' operator.
- * The function then prints the values of the resulting rectangle.
- */
 void operatorOverloading() {
     Rectangle r1(5, 10);
     Rectangle r2(3, 7);
@@ -212,6 +163,48 @@ void operatorOverloading() {
 
     cout << "A: " << r3.getA() << endl;
     cout << "B: " << r3.getB() << endl;
+}
+
+
+
+class Square {
+    private:
+        const int _a, _b;
+    public:
+        Square(int a, int b) : _a(a), _b(b) {}
+
+        int getA() const { return _a; }
+        int getB() const { return _a; }
+        int getArea() const { return _a * _b; }
+        
+        void draw() const {
+            cout << "Drawing square" << endl;
+        }
+};
+/*
+    ACCESS SPECIFIERS
+    KEYWORD     BASE                    DERIVED
+    public      public, ...             protected, ...
+    protected   private, protected      protected
+    private     private, protected      private      
+*/
+class Cube : public Square {
+    private:
+        const int _c;
+    public:
+        Cube(int a, int b, int c) : Square(a, b), _c(c) {}
+
+        int getC() const { return _c; }
+        int getVolume() const { return getA() * getB() * _c; }
+
+        void draw() const {
+            cout << "Drawing cube" << endl;
+        }
+};
+void inheritance() {
+    Cube c(5, 5, 5);
+    cout << "Volume: " << c.getVolume() << endl;
+    c.draw();
 }
 
 
@@ -224,7 +217,8 @@ void program() {
     // classExample();
     // importedClassExample();
     // friendExample();
-    operatorOverloading();
+    // operatorOverloading();
+    inheritance();
 }
 
 int main() {
