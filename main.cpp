@@ -171,7 +171,9 @@ class Square {
     private:
         const int _a, _b;
     public:
-        Square(int a, int b) : _a(a), _b(b) {}
+        Square(int a, int b) : _a(a), _b(b) {
+            cout << "Square created" << endl;
+        }
 
         int getA() const { return _a; }
         int getB() const { return _a; }
@@ -179,6 +181,10 @@ class Square {
         
         void draw() const {
             cout << "Drawing square" << endl;
+        }
+
+        ~Square() {
+            cout << "Square destroyed" << endl;
         }
 };
 /*
@@ -192,13 +198,19 @@ class Cube : public Square {
     private:
         const int _c;
     public:
-        Cube(int a, int b, int c) : Square(a, b), _c(c) {}
+        Cube(int a, int b, int c) : Square(a, b), _c(c) {
+            cout << "Cube created" << endl;
+        }
 
         int getC() const { return _c; }
         int getVolume() const { return getA() * getB() * _c; }
 
         void draw() const {
             cout << "Drawing cube" << endl;
+        }
+
+        ~Cube() {
+            cout << "Cube destroyed" << endl;
         }
 };
 void inheritance() {
